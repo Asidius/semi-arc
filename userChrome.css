@@ -68,25 +68,6 @@
 }
 
 #personal-bookmarks .bookmark-item {
-  max-width: 20px !important;
-  max-height: 20px !important;
-}
-
-#personal-bookmarks .bookmark-item .toolbarbutton-icon {
-  max-width: 12px !important;
-  max-height: 12px !important;
-  opacity: 0.45;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease;
-  transition: opacity 0.5s ease;
-}
-
-#personal-bookmarks .bookmark-item:hover .toolbarbutton-icon {
-  opacity: 1 !important;
-  filter: grayscale(0%);
-}
-
-#personal-bookmarks .bookmark-item {
  visibility: inherit !important; 
 }
 
@@ -109,6 +90,35 @@
 
 #PersonalToolbar{
   min-height: 70px !important;
+}
+
+/*==========================================================
+-----------| Bookmarks
+==========================================================*/
+
+/* Sizing on non-folder bookmarks */
+#personal-bookmarks .bookmark-item:not(menuitem) {
+  max-width: 20px !important;
+  max-height: 20px !important;
+}
+
+/* Bookmark icon sizing and style */
+#personal-bookmarks .bookmark-item .toolbarbutton-icon {
+  max-width: 12px !important;
+  max-height: 12px !important;
+  opacity: 0.45;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+#personal-bookmarks .bookmark-item:hover .toolbarbutton-icon {
+  opacity: 1 !important;
+  filter: grayscale(0%);
+}
+
+/* Bookmark folders */
+#personal-bookmarks .bookmark-item .toolbar-menupopup {
+  --panel-background: rgba(26,26,26,1) !important;
 }
 
 /*==========================================================
