@@ -2,8 +2,8 @@ This uses native firefox vertical tabs and the default bookmarks bar.
 
 All files go in the chrome directory.
 
-In about config set the below:
-widget.windows.mica to true
+In about config set the below: <br>
+widget.windows.mica to true <br>
 widget.windows.mica.toplevel-backdrop to 2
 
 I use MicaForEveryone with ONLY "Enable Blur Behind" turned on.
