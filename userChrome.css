@@ -201,8 +201,7 @@ toolbar .toolbarbutton-1 {
 }
 
 #main-window {
-  /* background: linear-gradient(151.5467608161811deg, rgba(26, 127.5, 121.5, 0.3), rgba(16, 127.5, 74.5, 0.3)) !important; */
-  background: rgba(0,0,0,0) !important;
+  background: rgba(4.5,114.5,127.5,0.35) !important;
 }
 
 #vertical-spacer,
