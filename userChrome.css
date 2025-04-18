@@ -214,43 +214,7 @@ toolbar .toolbarbutton-1 {
     -moz-window-dragging: no-drag;
 }
 
-/*==========================================================
------------| Extensions
-==========================================================*/
 
-#unified-extensions-button{
-  opacity:0;
-  &:hover {opacity:1;}
-}
-
-#ublock0_raymondhill_net-BAP .toolbarbutton-badge,
-#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP .toolbarbutton-badge {
-  color:black !important;
-  background: white !important;
-}
-
-#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP[style*="icon38_locked.png"] {
-  .toolbarbutton-icon{
-    list-style-image: url("bitwarden-locked-hollow4.svg")!important;
-    /*height: 90% !important;*/
-    opacity:1;
-  }
-}
-#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP .toolbarbutton-icon{
-  list-style-image: url("bitwarden-open-hollow4.svg") !important;
-  /*height: 90% !important;*/
-  opacity:1;
-}
-
-/*--ublock on--*/
-#ublock0_raymondhill_net-BAP .toolbarbutton-icon {
-  list-style-image: url("ublock-origin-hollow4.svg") !important;
-  opacity: 1;
-}
-/*--ublock off--*/
-#ublock0_raymondhill_net-BAP[tooltiptext="uBlock Origin (off)"] .toolbarbutton-icon {
-  opacity: 0.3 !important;
-}
 
 /*==========================================================
 -----------| Content Area improvements
@@ -383,4 +347,41 @@ button[title="Document"] {
   margin-left: 41px !important;
 }
 
+/*==========================================================
+-----------| Extensions
+==========================================================*/
 
+/* Hides extention button until hover */
+#unified-extensions-button{
+  opacity:0;
+  &:hover {opacity:1;}
+}
+
+/* Counters */
+#ublock0_raymondhill_net-BAP .toolbarbutton-badge,
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP .toolbarbutton-badge {
+  color: rgba(0,0,0,0.8) !important;
+  background: rgba(255,255,255,0.6) !important;
+  font-size: 8px !important;
+}
+
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP[style*="icon38_locked.png"] {
+  .toolbarbutton-icon{
+    list-style-image: url("bitwarden-locked-hollow4.svg")!important;
+    opacity: 1 !important;
+  }
+}
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP .toolbarbutton-icon{
+  list-style-image: url("bitwarden-open-hollow4.svg") !important;
+  opacity: 1;
+}
+
+/*--ublock on--*/
+#ublock0_raymondhill_net-BAP .toolbarbutton-icon {
+  list-style-image: url("ublock-origin-hollow4.svg") !important;
+  opacity: 1;
+}
+/*--ublock off--*/
+#ublock0_raymondhill_net-BAP[tooltiptext="uBlock Origin (off)"] .toolbarbutton-icon {
+  opacity: 0.3 !important;
+}
