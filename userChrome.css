@@ -52,9 +52,11 @@
   max-width: 150px !important;
 }
 
-#tabbrowser-tabbox{
-  transform: translateY(-70px) !important;
-  height: calc(100% + 63px) !important;
+#main-window:not([sizemode="fullscreen"]) { /* Prevents shitty spacing with fullscreen videos */
+  & #tabbrowser-tabbox{
+    transform: translateY(-70px) !important;
+    height: calc(100% + 63px) !important;
+  }
 }
 
 #sidebar-box{
@@ -201,7 +203,7 @@ toolbar .toolbarbutton-1 {
 }
 
 #main-window {
-  background: rgba(4.5,114.5,127.5,0.35) !important;
+  background: rgba(27, 127.5, 125, 1) !important;
 }
 
 #vertical-spacer,
@@ -228,8 +230,7 @@ toolbar .toolbarbutton-1 {
 /*==========================================================
 -----------| Content Area improvements
 ==========================================================*/
-
-/* Content window spacing*/
+/* Content window spacing */
 #main-window:not([sizemode="fullscreen"]){
     & #tabbrowser-tabbox {
         margin-bottom: var(--space-small) !important;
@@ -237,19 +238,21 @@ toolbar .toolbarbutton-1 {
     }
  
     html, body {
-        border-radius: var(--my-border-radius) !important;  /* Adjust the radius as needed */
-        overflow: hidden !important;     /* Prevent overflow beyond the rounded corners */
+        /*border-radius: var(--my-border-radius) !important; */
+        overflow: hidden !important; 
     }
 }
 
-/* Content Windows */
-#tabbrowser-tabbox {
-  border-start-start-radius: var(--my-border-radius) !important;
-  border-start-end-radius: var(--my-border-radius) !important;
-  border-end-end-radius: var(--my-border-radius) !important;
-  border-end-start-radius: var(--my-border-radius) !important;
-}
 
+/* Content Windows */
+#main-window:not([sizemode="fullscreen"]){ /* Fixes rounded corners in fullscreen videos */
+  & #tabbrowser-tabbox,.browserContainer,.browserStack,.browserSidebarContainer,browser {
+    border-start-start-radius: var(--my-border-radius) !important;
+    border-start-end-radius: var(--my-border-radius) !important;
+    border-end-end-radius: var(--my-border-radius) !important;
+    border-end-start-radius: var(--my-border-radius) !important;
+  }
+}
 /* Content transparent */
 #tabbrowser-tabpanels {
   background: rgba(0,0,0,0.1) !important;
@@ -260,6 +263,7 @@ toolbar .toolbarbutton-1 {
   border-radius: var(--my-border-radius) !important; 
 }
 
+/* Forgot what the fuck this was for */
 :root:not([inDOMFullscreen="true"]):not([chromehidden~="location"]):not([chromehidden~="toolbar"]) {
   & #tabbrowser-tabbox #tabbrowser-tabpanels .browserSidebarContainer {
     width: -moz-available;
@@ -270,30 +274,22 @@ toolbar .toolbarbutton-1 {
   }
 }
 
-/* Man fuck knows */
-.browserContainer,
-.browserStack,
-.browserSidebarContainer,
-browser{
-  border-radius: var(--my-border-radius) !important;
-  overflow: hidden !important;
-}
-
 /* Remove the white line around the content window */
 #tabbrowser-tabbox, #sidebar {
   outline: transparent !important;
 }
-
+}
 
 /*==========================================================
 -----------| URL Bar improvements
 ==========================================================*/
 
+/* URL Bar size */
 #urlbar-container {
-  max-width: 32% !important;
+  max-width: 32% !important; /* Do the calc when not lazy */
 }
 
-/* Nightly indicator in urlbar */
+/* Nightly indicator in urlbar - why the fuck is this a thing */
 #identity-icon-box {
   display: none;
 }
@@ -303,16 +299,18 @@ browser{
   background: none !important;
 }
 
+/* Only rounds the URL bar when not expanded */
 #urlbar:not([breakout-extend="true"]) #urlbar-background{
   border-radius: var(--my-border-radius) !important;
 }
 
+/* Expanded URL bar styles */
 #urlbar:is([focused], [open]) > #urlbar-background, #searchbar:focus-within {
   background-color: var(--toolbar-field-focus-background-color);
   backdrop-filter: blur(10px) !important;
 }
 
-/* Fix spacing around Urlbar*/
+/* Fix spacing around Urlbar - maybe useless now?*/
 toolbarspring{
   width: 100% !important;
   max-width: 100% !important;
@@ -342,16 +340,17 @@ button[title="Document"] {
 -----------| Menu Button Position
 ==========================================================*/
 
+/* Sexy firefox logo as menu icon */
 #PanelUI-button .toolbarbutton-icon {
   list-style-image: url("firefox-svg.svg") !important;
 }
-
+/* Spacing */
 #PanelUI-button {
   position: absolute !important;
   margin-top: 4px !important;
   margin-left: 5px !important;
 }
-
+/* Social distancing */
 #back-button {
   margin-left: 41px !important;
 }
