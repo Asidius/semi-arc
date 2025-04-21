@@ -8,7 +8,7 @@ widget.windows.mica.toplevel-backdrop to 2
 
 I use MicaForEveryone with ONLY "Enable Blur Behind" turned on.
 
-If you bookmark folders look off center right click and clear the folder name and save or don't and suffer :)
+If your bookmark folders look off center right click and clear the folder name and save or don't and suffer :)
 
 Edit the below code in userChrome.css for your own background colour or use a theme or Adaptive tab Color addon. <br>
 #main-window {
