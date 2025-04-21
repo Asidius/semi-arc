@@ -1,4 +1,4 @@
-This uses native firefox vertical tabs and the default bookmarks bar.
+This uses the native firefox vertical tabs and the default bookmarks bar.
 
 All files go in the chrome directory.
 
@@ -8,4 +8,9 @@ widget.windows.mica.toplevel-backdrop to 2
 
 I use MicaForEveryone with ONLY "Enable Blur Behind" turned on.
 
-Note: I'm just sharing this here for my own personal use. Individual issues will not be addressed. 
+If you bookmark folders look off center right click and clear the folder name and save or don't and suffer :)
+
+Edit the below code in userChrome.css for your own background colour or use a theme or Adaptive tab Color addon. <br>
+#main-window {
+  background: rgba(27, 127.5, 125, 1) !important;
+}
