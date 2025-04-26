@@ -146,6 +146,7 @@
 /* Windows control buttons */
 .titlebar-button.titlebar-min,
 .titlebar-button.titlebar-max,
+.titlebar-button.titlebar-restore,
 .titlebar-button.titlebar-close{
   border-radius: var(--my-border-radius) !important;
   max-height: 32px !important;
