@@ -7,6 +7,8 @@
   --tab-selected-bgcolor: rgba(255,255,255,0.2) !important; /* selected tab background */
   --tab-selected-outline-color: rgba(255,255,255,0) !important; /* selected tab border */
   --toolbar-field-focus-background-color: rgba(26,26,26,0.7) !important; /* urlbar open background */
+  --panel-background: rgba(26,26,26,1) !important; /* popup menus */
+  --urlbarView-highlight-background: rgba(26,26,26,1) !important;
 }
 
 /*==========================================================
@@ -52,7 +54,7 @@
   max-width: 150px !important;
 }
 
-#main-window:not([sizemode="fullscreen"]) { /* Prevents spacing with fullscreen videos */
+#main-window:not([sizemode="fullscreen"]) { /* Prevents shitty spacing with fullscreen videos */
   & #tabbrowser-tabbox{
     transform: translateY(-70px) !important;
     height: calc(100% + 63px) !important;
@@ -66,7 +68,7 @@
 
 #personal-bookmarks #PlacesToolbarItems {
   display: grid !important;
-  grid-template-columns: repeat(6,1fr)!important; /* Adjust the 6 to desired number of bookmarks per row */
+  grid-template-columns: repeat(6,1fr)!important;
 }
 
 #personal-bookmarks .bookmark-item {
@@ -97,6 +99,14 @@
 /*==========================================================
 -----------| Bookmarks
 ==========================================================*/
+
+/* animation */
+#personal-bookmarks .bookmark-item:not(menuitem) {
+  transition: transform 0.3s ease;
+}
+#personal-bookmarks .bookmark-item:not(menuitem):hover {
+  transform: translateY(-3px);
+}
 
 /* Sizing on non-folder bookmarks */
 #personal-bookmarks .bookmark-item:not(menuitem) {
@@ -210,7 +220,7 @@ toolbar .toolbarbutton-1 {
 }
 
 #main-window {
-  background: rgba(27, 127.5, 125, 1) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
 }
 
 #vertical-spacer,
@@ -232,8 +242,6 @@ toolbar .toolbarbutton-1 {
     -moz-window-dragging: no-drag;
 }
 
-
-
 /*==========================================================
 -----------| Content Area improvements
 ==========================================================*/
@@ -250,14 +258,14 @@ toolbar .toolbarbutton-1 {
     }
 }
 
-
 /* Content Windows */
 #main-window:not([sizemode="fullscreen"]){ /* Fixes rounded corners in fullscreen videos */
-  & #tabbrowser-tabbox,.browserContainer,.browserStack,.browserSidebarContainer,browser {
+  & #tabbrowser-tabbox /*,.browserContainer,.browserStack,.browserSidebarContainer,browser*/ {
     border-start-start-radius: var(--my-border-radius) !important;
     border-start-end-radius: var(--my-border-radius) !important;
     border-end-end-radius: var(--my-border-radius) !important;
     border-end-start-radius: var(--my-border-radius) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
   }
 }
 /* Content transparent */
@@ -290,12 +298,20 @@ toolbar .toolbarbutton-1 {
 -----------| URL Bar improvements
 ==========================================================*/
 
-/* URL Bar size */
-#urlbar-container {
-  max-width: 32% !important; /* Do the calc when not lazy */
+/* animation */
+#urlbar:not([breakout-extend="true"]):hover #urlbar-background {
+  outline: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Nightly indicator in urlbar - why the fuck is this a thing Mozilla?*/
+/* URL Bar size */
+#urlbar-container, #wrapper-urlbar-container {
+  max-width: 32% !important; /* Do the calc when not lazy */
+  min-width: 32% !important;
+  width: 32% !important;
+  flex: 200 0 auto !important;
+}
+
+/* Nightly indicator in urlbar - why the fuck is this a thing */
 #identity-icon-box {
   display: none;
 }
@@ -305,18 +321,26 @@ toolbar .toolbarbutton-1 {
   background: none !important;
 }
 
+/* icons */
+#urlbar hbox,
+#tracking-protection-icon-container,
+#identity-permission-box{
+  border-radius: var(--my-border-radius) !important;
+}
+
 /* Only rounds the URL bar when not expanded */
 #urlbar:not([breakout-extend="true"]) #urlbar-background{
   border-radius: var(--my-border-radius) !important;
+  margin-top:1px;
 }
 
 /* Expanded URL bar styles */
 #urlbar:is([focused], [open]) > #urlbar-background, #searchbar:focus-within {
-  background-color: var(--toolbar-field-focus-background-color);
+  background-color: var(--panel-background) !important;
   backdrop-filter: blur(10px) !important;
 }
 
-/* Fix spacing around Urlbar - maybe useless now?*/
+/* Fix spacing around Urlbar - maybe useless now? */
 toolbarspring{
   width: 100% !important;
   max-width: 100% !important;
