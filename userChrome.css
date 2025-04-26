@@ -117,7 +117,14 @@
   opacity: 1 !important;
   filter: grayscale(0%);
 }
-
+/*size icons placement when bookmarks have hidden names */
+#PlacesToolbarItems > .bookmark-item > .toolbarbutton-icon[label]:not([label=""]) {
+  margin-inline-end: 0px !important;
+}
+/* Remov bookmarks names */
+#personal-bookmarks .bookmark-item:not(menuitem) .toolbarbutton-text {
+  display: none !important;
+}
 /* Bookmark folders */
 #personal-bookmarks .bookmark-item .toolbar-menupopup {
   --panel-background: rgba(26,26,26,1) !important;
