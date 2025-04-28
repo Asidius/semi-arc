@@ -1,0 +1,431 @@
+/*==========================================================
+-----------| Variables
+==========================================================*/
+
+* {
+  --rose-pine: rgba(235,188,186,1) !important; /* accent color */
+  --main-theme-color-opacity: rgba(31,29,49,0.7) !important; /* main theme color with transparency */
+   --main-theme-color: rgba(31,29,49,1) !important; /* main theme color with transparency */
+  
+  --my-border-radius: 10px !important; /* my standardised border-radius */
+  
+  --tab-selected-bgcolor: var(--main-theme-color) !important; /* selected tab background */
+  --tab-selected-outline-color: var(--rose-pine) !important; /* selected tab border */
+  --toolbar-field-focus-background-color: var(--main-theme-color-opacity) !important; /* urlbar open background */
+  --panel-background: var(--main-theme-color) !important; /* popup menus */
+  --urlbarView-highlight-background: var(--main-theme-color)) !important;
+}
+
+/*==========================================================
+-----------| Tabs
+==========================================================*/
+
+/* tab radius */
+.tab-background {
+  border-radius: var(--my-border-radius) !important;
+}
+
+/* selected tab highlighting */
+.tab-background {
+  &:is([selected], [multiselected]) {
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 1px 1px 1px rgba(0,0,0,0.1) !important;
+    border: 1.5px solid var(--tab-selected-outline-color) !important;
+  }
+}
+
+/* Tab close button */
+.tab-close-button {
+  border-radius: var(--my-border-radius) !important;
+}
+
+/* New tab button */
+#tabs-newtab-button {
+  border-radius: var(--my-border-radius) !important;
+}
+
+/*==========================================================
+-----------| Fucking hell below....
+==========================================================*/
+
+#sidebar-launcher-splitter {
+  pointer-events: none !important;
+}
+
+#PlacesChevron {
+  display: none !important;
+}
+
+#PersonalToolbar{
+  max-width: 150px !important;
+}
+
+#main-window:not([sizemode="fullscreen"]) { /* Prevents shitty spacing with fullscreen videos */
+  & #tabbrowser-tabbox{
+    transform: translateY(-70px) !important;
+    height: calc(100% + 63px) !important;
+  }
+}
+/*
+#sidebar-box{
+  transform: translateY(-70px) !important;
+  height: calc(100% + 68px) !important;
+}
+*/
+#personal-bookmarks #PlacesToolbarItems {
+  display: grid !important;
+  grid-template-columns: repeat(6,1fr)!important; /* Adjusts number of icons per row */
+}
+
+#personal-bookmarks .bookmark-item {
+ visibility: inherit !important; 
+}
+
+#personal-bookmarks .bookmark-item:not(.toolbar-menupopup .bookmark-item){
+  align-content: center !important;
+  margin: auto !important;
+}
+
+#personal-bookmarks {
+  max-width: 132px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+  outline: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--my-border-radius) !important;
+}
+
+#PersonalToolbar{
+  min-height: 70px !important;
+}
+
+/*==========================================================
+-----------| Bookmarks
+==========================================================*/
+
+/* animation */
+#personal-bookmarks .bookmark-item:not(menuitem) {
+  transition: transform 0.3s ease;
+}
+#personal-bookmarks .bookmark-item:not(menuitem):hover {
+  transform: translateY(-3px);
+}
+
+/* Sizing on non-folder bookmarks */
+#personal-bookmarks .bookmark-item:not(menuitem) {
+  max-width: 20px !important;
+  max-height: 20px !important;
+}
+
+/* Bookmark icon sizing and style */
+#personal-bookmarks .bookmark-item .toolbarbutton-icon {
+  max-width: 12px !important;
+  max-height: 12px !important;
+  opacity: 0.45;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+#personal-bookmarks .bookmark-item:hover .toolbarbutton-icon {
+  opacity: 1 !important;
+  filter: grayscale(0%);
+}
+/*size icons placement when bookmarks have hidden names */
+#PlacesToolbarItems > .bookmark-item > .toolbarbutton-icon[label]:not([label=""]) {
+  margin-inline-end: 0px !important;
+}
+/* Remov bookmarks names */
+#personal-bookmarks .bookmark-item:not(menuitem) .toolbarbutton-text {
+  display: none !important;
+}
+
+/*==========================================================
+-----------| Buttons
+==========================================================*/
+/* Windows control buttons */
+.titlebar-button.titlebar-min,
+.titlebar-button.titlebar-max,
+.titlebar-button.titlebar-restore,
+.titlebar-button.titlebar-close{
+  border-radius: var(--my-border-radius) !important;
+  max-height: 32px !important;
+  max-width: 32px !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+.titlebar-button.titlebar-close{ margin-right: 10px!important; }
+
+/* General Buttons */
+toolbar .toolbarbutton-1 {
+  &:not([disabled]) {
+    &:hover > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+      border-radius: var(--my-border-radius) !important;
+    }
+  }
+}
+
+/* Menu/Settings button */
+#PanelUI-menu-button .toolbarbutton-badge-stack{
+  border-radius: var(--my-border-radius) !important;
+}
+
+/* Inside extensions icon menu */
+:is(panelview .toolbarbutton-1, toolbarbutton.subviewbutton, .widget-overflow-list .toolbarbutton-1, .toolbaritem-combined-buttons:is(:not([cui-areatype="toolbar"]), [overflowedItem="true"]) > toolbarbutton) {
+  &:not([disabled]):hover {
+    border-radius: var(--my-border-radius) !important;
+  }
+}
+/* Inside extensions icon menu - cogwheel button */
+.unified-extensions-item-menu-button.subviewbutton {
+  & > .toolbarbutton-icon {
+    border-radius: var(--my-border-radius) !important;
+  }
+}
+
+/*==========================================================
+-----------| Menus
+==========================================================*/
+
+:is(menupopup, panel):where([type="arrow"]){
+  border-radius: var(--my-border-radius) !important;
+}
+
+.panel-viewcontainer{
+   background: var(--panel-background) !important;
+   border-radius: var(--my-border-radius) !important;
+}
+
+/*==========================================================
+-----------| Floating status panel
+==========================================================*/
+@-moz-document url-prefix("chrome:") {   
+  #statuspanel {    
+    margin: 10px !important;  
+  }    
+  #statuspanel-label {    
+    border-radius: var(--my-border-radius) !important;    
+    padding: 2px 10px !important;    
+    border: 1px solid var(--rose-pine) !important;    
+    background: rgba(0,0,0,0.5) !important;  
+    backdrop-filter: Blur(10px) !important;
+  }  
+}
+
+/*=================================================================================
+-----------------------| Improvements
+===================================================================================*/
+* {
+  font-family: "JetBrainsMono NF" !important;
+}
+
+#main-window {
+  background: var(--toolbar-field-focus-background-color) !important;
+}
+
+#vertical-spacer,
+#sidebar-button {
+  display: none !important;
+}
+
+/*==========================================================
+-----------| Dragging with vertical tab bar
+==========================================================*/
+
+/* Allow dragging from the vertical tabs bar */
+#tabbrowser-tabs {
+    -moz-window-dragging: drag;
+}
+
+/* Prevent buttons or other elements from being draggable */
+#tabbrowser-tabs .tabbrowser-tab{
+    -moz-window-dragging: no-drag;
+}
+
+/*==========================================================
+-----------| Content Area improvements
+==========================================================*/
+/* Content window spacing */
+#main-window:not([sizemode="fullscreen"]){
+    & #tabbrowser-tabbox {
+        margin-bottom: var(--space-small) !important;
+        margin-right: var(--space-small) !important;
+    }
+ 
+    html, body {
+        /*border-radius: var(--my-border-radius) !important; */
+        overflow: hidden !important; 
+    }
+}
+
+/* Content Windows */
+#main-window:not([sizemode="fullscreen"]){ /* Fixes rounded corners in fullscreen videos */
+  & #tabbrowser-tabbox /*,.browserContainer,.browserStack,.browserSidebarContainer,browser*/ {
+    border-start-start-radius: var(--my-border-radius) !important;
+    border-start-end-radius: var(--my-border-radius) !important;
+    border-end-end-radius: var(--my-border-radius) !important;
+    border-end-start-radius: var(--my-border-radius) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+  }
+}
+/* Content transparent */
+#tabbrowser-tabpanels {
+  background: rgba(0,0,0,0.1) !important;
+}
+/* AI sidebar */
+#sidebar {
+  border-radius: var(--my-border-radius) !important; 
+}
+
+/* Forgot what the fuck this was for */
+:root:not([inDOMFullscreen="true"]):not([chromehidden~="location"]):not([chromehidden~="toolbar"]) {
+  & #tabbrowser-tabbox #tabbrowser-tabpanels .browserSidebarContainer {
+    width: -moz-available;
+    border-radius: var(--my-border-radius) !important;
+    position: relative;
+    transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
+    overflow: hidden;
+  }
+}
+
+/* Remove the white line around the content window */
+#tabbrowser-tabbox, #sidebar {
+  outline: transparent !important;
+}
+
+/*==========================================================
+-----------| URL Bar improvements
+==========================================================*/
+
+/* animation */
+#urlbar:not([breakout-extend="true"]):hover #urlbar-background {
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* URL Bar size */
+#urlbar-container, #wrapper-urlbar-container {
+  max-width: 32% !important; /* Do the calc when not lazy */
+  min-width: 32% !important;
+  width: 32% !important;
+  flex: 200 0 auto !important;
+}
+
+/* Nightly indicator in urlbar - why the fuck is this a thing */
+#identity-icon-box {
+  display: none;
+}
+
+/* Search engine selector */
+#urlbar-searchmode-switcher {
+  background: none !important;
+}
+
+/* icons */
+#urlbar hbox,
+#tracking-protection-icon-container,
+#identity-permission-box{
+  border-radius: var(--my-border-radius) !important;
+}
+
+.urlbarView-row:has(.urlbarView-row-inner[aria-selected="true"]) {
+  background: var(--rose-pine) !important;
+  color: var(--tab-selected-bgcolor) !important;
+}
+
+/* Only rounds the URL bar when not expanded */
+#urlbar:not([breakout-extend="true"]) #urlbar-background{
+  border-radius: var(--my-border-radius) !important;
+  margin-top:1px;
+}
+
+/* Expanded URL bar styles */
+#urlbar:is([focused], [open]) > #urlbar-background, #searchbar:focus-within {
+  background-color: var(--panel-background) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Fix spacing around Urlbar - maybe useless now? */
+toolbarspring{
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/*==========================================================
+-----------| Vertical Tabs improvements
+==========================================================*/
+
+/* Buttons bottom */
+.button-background {
+  border-radius: var(--my-border-radius) !important;
+}
+
+/* Breathing room bottom */
+.tools-and-extensions.actions-list {
+  margin-bottom: 10px !important;
+}
+
+/* Remove useless buttons */
+button[title="Customize sidebar"],
+button[title="Document"] {
+    display:none !important;
+}
+
+/*==========================================================
+-----------| Menu Button Position
+==========================================================*/
+
+/* Sexy firefox logo as menu icon */
+#PanelUI-button .toolbarbutton-icon {
+  list-style-image: url("firefox-svg.svg") !important;
+}
+/* Spacing */
+#PanelUI-button {
+  position: absolute !important;
+  margin-top: 4px !important;
+  margin-left: 5px !important;
+}
+/* Social distancing */
+#back-button {
+  margin-left: 41px !important;
+}
+
+/*==========================================================
+-----------| Extensions
+==========================================================*/
+
+/* Hides extention button until hover */
+#unified-extensions-button{
+  opacity:0;
+  &:hover {opacity:1;}
+}
+
+/* Counters */
+#ublock0_raymondhill_net-BAP .toolbarbutton-badge,
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP .toolbarbutton-badge {
+  color: rgba(0,0,0,0.8) !important;
+  background: rgba(255,255,255,0.6) !important;
+  font-size: 8px !important;
+}
+
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP[style*="icon38_locked.png"] {
+  .toolbarbutton-icon{
+    list-style-image: url("bitwarden-locked-hollow4.svg")!important;
+    opacity: 1 !important;
+  }
+}
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP .toolbarbutton-icon{
+  list-style-image: url("bitwarden-open-hollow4.svg") !important;
+  opacity: 1;
+}
+
+/*--ublock on--*/
+#ublock0_raymondhill_net-BAP .toolbarbutton-icon {
+  list-style-image: url("ublock-origin-hollow4.svg") !important;
+  opacity: 1;
+}
+/*--ublock off--*/
+#ublock0_raymondhill_net-BAP[tooltiptext="uBlock Origin (off)"] .toolbarbutton-icon {
+  opacity: 0.3 !important;
+}
